@@ -1,36 +1,49 @@
 package ex3;
-public class Zoo {
 
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Classe qui représente un zoo avec sa liste d'animaux et son nom
+ */
+public class Zoo {
+	/** Nom du zoo */
 	private String nom;
-	private SavaneAfricaine savaneAfricaine;
-	private ZoneCarnivore zoneCarnivore;
-	private FermeReptile fermeReptile;
-	private Aquarium aquarium;
-	
+
+	/** Liste des animaux du Zoo */
+	private List<Animal> listeAnimaux = new ArrayList<>();
+
+	/**
+	 * Contructeur de la calsse Zoo
+	 * @param nom nom du Zoo
+	 */
 	public Zoo(String nom){
 		this.nom = nom;
 	}
-	
-	public void addAnimal(String nomAnimal, String typeAnimal, String comportement){
-		if (typeAnimal.equals("MAMMIFERE") && comportement.equals("CARNIVORE")){
-			zoneCarnivore.addAnimal(typeAnimal, nomAnimal, comportement);
-		}
-		else if (typeAnimal.equals("MAMMIFERE") && comportement.equals("HERBIVORE")){
-			savaneAfricaine.addAnimal(typeAnimal, nomAnimal, comportement);
-		}
-		else if (typeAnimal.equals("REPTILE")){
-			fermeReptile.addAnimal(typeAnimal, nomAnimal, comportement);
-		}
-		else if (typeAnimal.equals("POISSON")){
-			aquarium.addAnimal(typeAnimal, nomAnimal, comportement);
+
+	/**
+	 * Ajouter un animale a la liste des animaux du zoo
+	 * @param animal l'animal à ajouter
+	 */
+	public void addAnimal(Animal animal){
+		listeAnimaux.add(animal);
+	}
+
+	/**
+	 * Afficher la liste des animaux du zoo
+	 */
+	public void afficherListeAnimaux(){
+		for (int i=0; i<listeAnimaux.size(); i++) {
+			System.out.println(listeAnimaux.get(i));
 		}
 	}
-	
-	public void afficherListeAnimaux(){
-		savaneAfricaine.afficherListeAnimaux();
-		zoneCarnivore.afficherListeAnimaux();
-		fermeReptile.afficherListeAnimaux();
-		aquarium.afficherListeAnimaux();
+
+	/**
+	 * Retourne la taille de la liste des animaux du zoo
+	 * @return le nombre des animaux dans le zoo
+	 */
+	public int taille() {
+		return listeAnimaux.size();
 	}
 
 	/** Getter for nom
